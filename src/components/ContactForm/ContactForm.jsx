@@ -6,10 +6,7 @@ import { Form } from './ContactForm.styled';
 
 export default class ContactForm extends Component {
   static propTypes = {
-    name: PropTypes.string,
-    number: PropTypes.string,
-    onAddContact: PropTypes.func,
-    onDeleteContact: PropTypes.func,
+    onAddContact: PropTypes.func.isRequired,
   };
 
   state = {

@@ -4,31 +4,17 @@ import { FilterLabel, FilterInput } from './Filter.styled';
 
 export default class Filter extends Component {
   static propTypes = {
-    onFilter: PropTypes.func,
+    onFilter: PropTypes.func.isRequired,
+    filter: PropTypes.string,
   };
 
-  state = {
-    filter: '',
-  };
-
-  handleChange = e => {
-    const { filter } = this.state;
-    const { onFilter } = this.props;
-    const { value } = e.target;
-
-    this.setState({ filter: value });
-
-    if (filter !== value) {
-      onFilter({ filter: value });
-    }
-  };
   render() {
-    const { filter } = this.state;
+    const { filter, onFilter } = this.props;
 
     return (
       <FilterLabel>
         Find contacts by name
-        <FilterInput type="text" onChange={this.handleChange} value={filter} />
+        <FilterInput type="text" onChange={onFilter} value={filter} />
       </FilterLabel>
     );
   }
