@@ -19,8 +19,18 @@ export default class App extends Component {
 
   componentDidMount() {
     const contacts = JSON.parse(localStorage.getItem('phonebook-contacts'));
+
     if (contacts) {
       this.setState({ contacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(
+        'phonebook-contacts',
+        JSON.stringify(this.state.contacts)
+      );
     }
   }
 
