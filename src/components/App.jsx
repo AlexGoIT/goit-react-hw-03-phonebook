@@ -10,6 +10,8 @@ import Filter from './Filter';
 const lsAPI = new LocalStorageAPI();
 const KEY = 'phonebook-contacts';
 
+document.title = 'HW-3 Phonebook';
+
 export default class App extends Component {
   state = {
     contacts: [
@@ -43,7 +45,7 @@ export default class App extends Component {
     const { name } = contact;
 
     // Verify contact
-    if (contacts.find(contact => contact.name === name)) {
+    if (contacts.some(contact => contact.name === name)) {
       Notify.failure(`${name} is already in contacts`);
       return;
     }
@@ -67,9 +69,16 @@ export default class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
-  render() {
-    document.title = 'HW-3 Phonebook';
+  // Filter
+  contactFilter = () => {
+    const { contacts, filter } = this.state;
 
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase().trim())
+    );
+  };
+
+  render() {
     const { contacts, filter } = this.state;
 
     return (
@@ -79,8 +88,7 @@ export default class App extends Component {
         <h2>Contacts</h2>
         <Filter onFilter={this.handleFilter} filter={filter} />
         <ContactList
-          contacts={contacts}
-          filter={filter}
+          contacts={this.contactFilter(contacts)}
           onDeleteContact={this.handleDeleteContact}
         />
       </div>
