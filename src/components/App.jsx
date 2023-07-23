@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import './App.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 import LocalStorageAPI from 'services/localStorageAPI';
 import ContactForm from './ContactForm';
@@ -82,16 +84,30 @@ export default class App extends Component {
     const { contacts, filter } = this.state;
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container className="container" maxWidth="sm" sx={{ mt: 4 }}>
+        <Typography
+          variant="h1"
+          gutterBottom
+          align="center"
+          sx={{ fontSize: '40px', fontWeight: 700, mb: 2 }}
+        >
+          Phonebook
+        </Typography>
         <ContactForm onAddContact={this.handleAddContact} />
-        <h2>Contacts</h2>
+        <Typography
+          variant="h2"
+          gutterBottom
+          align="center"
+          sx={{ fontSize: '30px', fontWeight: 700, mb: 2 }}
+        >
+          Contacts
+        </Typography>
         <Filter onFilter={this.handleFilter} filter={filter} />
         <ContactList
           contacts={this.contactFilter(contacts)}
           onDeleteContact={this.handleDeleteContact}
         />
-      </div>
+      </Container>
     );
   }
 }
