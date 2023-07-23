@@ -48,11 +48,8 @@ export default class ContactForm extends Component {
           name="name"
           label="Name"
           variant="outlined"
-          inputProps={{
-            pattern: "^([A-Za-z-']{1,50})|([А-Яа-я-']{1,50})$",
-            title:
-              "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
-          }}
+          pattern="^([A-Za-z-']{1,50})|([А-Яа-я-']{1,50})$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           value={name}
           onChange={this.handleChange}
@@ -63,11 +60,8 @@ export default class ContactForm extends Component {
           name="number"
           label="Number"
           variant="outlined"
-          inputProps={{
-            title:
-              'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
-            pattern: '^+d{2}(d{3})d{3}-d{2}-d{2}$',
-          }}
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          pattern="^+d{2}(d{3})d{3}-d{2}-d{2}$"
           required
           value={number}
           onChange={this.handleChange}
