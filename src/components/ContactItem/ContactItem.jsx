@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import { Item } from './ContactItem.styled';
 
 const ContactItem = ({ contact, onDeleteContact }) => {
@@ -8,7 +11,9 @@ const ContactItem = ({ contact, onDeleteContact }) => {
     <Item>
       <span>{name}</span>
       <span> {number}</span>
-      <button onClick={() => onDeleteContact(id)}>Delete</button>
+      <IconButton aria-label="delete" onClick={() => onDeleteContact(id)}>
+        <DeleteIcon />
+      </IconButton>
     </Item>
   );
 };

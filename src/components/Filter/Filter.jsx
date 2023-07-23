@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { FilterLabel, FilterInput } from './Filter.styled';
+import TextField from '@mui/material/TextField';
 
 export default class Filter extends Component {
   static propTypes = {
@@ -12,10 +12,15 @@ export default class Filter extends Component {
     const { filter, onFilter } = this.props;
 
     return (
-      <FilterLabel>
-        Find contacts by name
-        <FilterInput type="text" onChange={onFilter} value={filter} />
-      </FilterLabel>
+      <TextField
+        id="filter"
+        label="Filter"
+        name="filter"
+        variant="outlined"
+        fullWidth
+        onChange={onFilter}
+        value={filter}
+      />
     );
   }
 }
