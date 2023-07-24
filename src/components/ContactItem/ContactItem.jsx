@@ -10,7 +10,7 @@ const ContactItem = ({ contact, onDeleteContact }) => {
   return (
     <Item>
       <span>{name}</span>
-      <span> {number}</span>
+      <span>{number}</span>
       <IconButton aria-label="delete" onClick={() => onDeleteContact(id)}>
         <DeleteIcon />
       </IconButton>
